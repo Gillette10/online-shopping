@@ -1,0 +1,7 @@
+[build]
+  command = "npm run start:prod"
+  functions = "backend/functions"
+
+[dev]
+  command = "npm run start:dev"
+  functions = "backend/functions"
