@@ -1,0 +1,68 @@
+import styled from "styled-components";
+import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+
+const NavBar = () => {
+	const { cartTotalQuantity } = useSelector((state) => state.cart);
+
+	return (
+		<NavContainer>
+			<Link to="/">
+				<h2>OnlineShop</h2>
+			</Link>
+			<Link to="/cart">
+				<NavFlex>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="30"
+						height="30"
+						fill="currentColor"
+						className="bi bi-cart-fill"
+						viewBox="0 0 16 16"
+					>
+						<path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+					</svg>
+					<Quantity>{cartTotalQuantity}</Quantity>
+				</NavFlex>
+			</Link>
+		</NavContainer>
+	);
+};
+
+export default NavBar;
+
+//STYLES
+const Link = styled(NavLink)`
+	text-decoration: none;
+	color: #fff;
+`;
+const NavContainer = styled.nav`
+	background-color: #000;
+	border-bottom: 1px solid #d1cfcf;
+	padding: 1rem 4rem;
+	display: flex;
+	align-items: center;
+
+	justify-content: space-between;
+
+	@media (max-width: 540px) {
+		padding: 1rem 2rem;
+	}
+`;
+
+const NavFlex = styled.div`
+	display: flex;
+	align-items: center;
+	gap: 0.4rem;
+`;
+const Quantity = styled.div`
+	font-size: 1.1rem;
+	color: black;
+	background-color: orange;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 30px;
+	width: 25px;
+`;
